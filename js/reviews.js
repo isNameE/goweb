@@ -20,7 +20,7 @@ reviewForm.addEventListener("submit", (event) => {
 
   const draft = new URL("https://t.me/wor_t_h");
   draft.searchParams.set("text", [
-    "Отзыв о сайте GoWeb",
+    "Отзыв о сайте MasterFresh",
     `Имя для публикации: ${name}`,
     `Оценка: ${rating}/5`,
     "",

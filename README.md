@@ -1,6 +1,6 @@
-# GoWeb
+# MasterFresh
 
-Статический сайт компании GoWeb. Для локального просмотра запустите `python -m http.server 8765` в корне проекта и откройте `http://localhost:8765`. Включите JavaScript для каталога, страниц кейсов и формы. Сайт использует HTML, CSS и чистый JavaScript, а изображения хранятся в проекте.
+Статический сайт компании MasterFresh. Для локального просмотра запустите `python -m http.server 8765` в корне проекта и откройте `http://localhost:8765`. Включите JavaScript для каталога, страниц кейсов и формы. Сайт использует HTML, CSS и чистый JavaScript, а изображения хранятся в проекте.
 
 ## Файлы сайта
 
@@ -23,7 +23,7 @@ README.md        Инструкция по публикации и редакт�
 ### 1. Создайте репозиторий
 
 1. Войдите в свой аккаунт на [GitHub](https://github.com/).
-2. Нажмите **+ → New repository**. Введите имя, например `goweb`.
+2. Нажмите **+ → New repository**. Введите имя, например `masterfresh`.
 3. Выберите **Public**, чтобы использовать GitHub Pages на бесплатном тарифе.
 4. При создании репозитория оставьте добавление README выключенным. Готовый `README.md` уже входит в проект.
 5. Нажмите **Create repository**. [Создание репозитория](https://docs.github.com/en/repositories/creating-and-managing-repositories/creating-a-new-repository)
@@ -32,13 +32,13 @@ README.md        Инструкция по публикации и редакт�
 
 На странице нового пустого репозитория нажмите **uploading an existing file**. Если в нём уже есть файлы, нажмите **Add file → Upload files**. Перетащите содержимое папки проекта из проводника в область загрузки. Проверьте, что `index.html`, `projects.html`, `project.html` и `README.md` оказались в корне, а `css`, `js` и `images` сохранили свои имена. Для публикации достаточно файлов из списка выше. Нажмите **Commit changes**. [Загрузка файлов через браузер](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository)
 
-Если загрузчик браузера разворачивает папки, воспользуйтесь Git из папки проекта. Эти команды предназначены для первого пуша в пустой репозиторий. Замените `ВАШ_ЛОГИН` и `goweb` на имя владельца и репозитория из адресной строки GitHub.
+Если загрузчик браузера разворачивает папки, воспользуйтесь Git из папки проекта. Эти команды предназначены для первого пуша в пустой репозиторий. Замените `ВАШ_ЛОГИН` и `masterfresh` на имя владельца и репозитория из адресной строки GitHub.
 
 ```bash
 git init -b main
 git add index.html projects.html project.html css js images reviews.json README.md .nojekyll
-git commit -m "Add GoWeb website"
-git remote add origin https://github.com/ВАШ_ЛОГИН/goweb.git
+git commit -m "Add MasterFresh website"
+git remote add origin https://github.com/ВАШ_ЛОГИН/masterfresh.git
 git push -u origin main
 ```
 
@@ -51,7 +51,7 @@ git push -u origin main
 
 ### 4. Найдите адрес сайта
 
-После завершения публикации снова откройте **Settings → Pages** и нажмите **Visit site**. Адрес проекта обычно выглядит как `https://ВАШ_ЛОГИН.github.io/goweb/`. Если ссылки ещё нет, проверьте выполнение публикации во вкладке **Actions**. При дальнейших изменениях достаточно отправить коммит в `main`. [Публикация сайта GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
+После завершения публикации снова откройте **Settings → Pages** и нажмите **Visit site**. Адрес проекта обычно выглядит как `https://ВАШ_ЛОГИН.github.io/masterfresh/`. Если ссылки ещё нет, проверьте выполнение публикации во вкладке **Actions**. При дальнейших изменениях достаточно отправить коммит в `main`. [Публикация сайта GitHub Pages](https://docs.github.com/en/pages/getting-started-with-github-pages/creating-a-github-pages-site)
 
 ## Добавление проекта
 

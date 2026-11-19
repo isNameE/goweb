@@ -113,12 +113,12 @@ function setupCase(article) {
   const project = PROJECTS.find((item) => item.id === id);
 
   if (!project) {
-    document.title = "Кейс не найден — GoWeb";
+    document.title = "Кейс не найден — MasterFresh";
     document.getElementById("project-missing").hidden = false;
     return;
   }
 
-  document.title = `${project.title} — GoWeb`;
+  document.title = `${project.title} — MasterFresh`;
   article.querySelector(".demo-badge").hidden = !project.demo;
   document.getElementById("case-category").textContent = PROJECT_CATEGORIES[project.category];
   document.getElementById("case-title").textContent = project.title;
