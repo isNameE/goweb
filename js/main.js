@@ -1,13 +1,5 @@
 "use strict";
 
-// Публичные контакты GoWeb. Заполните их один раз для всех страниц.
-// Telegram — имя без @, WhatsApp — номер с кодом страны, email — полный адрес.
-const CONTACTS = {
-  telegram: "",
-  whatsapp: "",
-  email: "",
-};
-
 function setupMenu() {
   const button = document.querySelector(".menu-toggle");
   const navigation = document.getElementById("main-nav");
@@ -42,59 +34,6 @@ function setupMenu() {
   });
 }
 
-function setupContacts() {
-  const telegram = CONTACTS.telegram.trim().replace(/^@/, "");
-  const whatsapp = CONTACTS.whatsapp.replace(/\D/g, "");
-  const email = CONTACTS.email.trim();
-  const links = {
-    telegram: telegram ? `https://t.me/${encodeURIComponent(telegram)}` : "",
-    whatsapp: whatsapp ? `https://wa.me/${whatsapp}` : "",
-    email: email ? `mailto:${encodeURIComponent(email).replace(/%40/g, "@")}` : "",
-  };
-  document.querySelectorAll("[data-contact]").forEach((link) => {
-    const address = links[link.dataset.contact];
-    if (address) {
-      link.href = address;
-      if (link.hasAttribute("data-contact-label")) {
-        const arrow = makeElement("span", "↗");
-        arrow.setAttribute("aria-hidden", "true");
-        link.append(arrow);
-      }
-    } else if (link.hasAttribute("data-contact-label")) {
-      link.replaceWith(makeElement("span", `${link.textContent} · пока не указан`, "contact-unavailable"));
-    }
-  });
-
-  const form = document.getElementById("contact-form");
-  if (!form) return;
-
-  const formStatus = document.getElementById("form-status");
-  const submitButton = form.querySelector("button[type='submit']");
-  submitButton.disabled = !links.email;
-
-  if (!links.email) formStatus.textContent = "Форма станет доступна после добавления адреса GoWeb.";
-
-  // Собираем письмо на устройстве посетителя и передаём его почтовому клиенту.
-  form.addEventListener("submit", (event) => {
-    event.preventDefault();
-    if (!links.email) return;
-
-    const values = new FormData(form);
-    const name = values.get("name").trim();
-    const reply = values.get("reply").trim();
-    const message = values.get("message").trim().replace(/\r?\n/g, "\r\n");
-    if (!name || !reply || !message) {
-      formStatus.textContent = "Заполните все поля, чтобы подготовить письмо.";
-      return;
-    }
-
-    const subject = encodeURIComponent("Новый проект для GoWeb");
-    const body = encodeURIComponent([`Имя: ${name}`, `Контакт: ${reply}`, "", "Описание задачи:", message].join("\r\n"));
-    formStatus.textContent = "Отправьте письмо из почтового приложения, когда черновик откроется.";
-    window.location.href = `${links.email}?subject=${subject}&body=${body}`;
-  });
-}
-
 // Вставляем текст через textContent, чтобы символы из данных не становились HTML.
 function makeElement(tag, text, className) {
   const element = document.createElement(tag);
@@ -125,17 +64,18 @@ function createProjectCard(project) {
   const body = makeElement("div", "", "project-body");
   const tags = makeElement("ul", "", "tags");
   const link = makeElement("a", "Смотреть кейс", "text-link");
-  const arrow = makeElement("span", "↗");
 
   link.href = `project.html?id=${encodeURIComponent(project.id)}`;
   link.setAttribute("aria-label", `Смотреть кейс «${project.title}»`);
-  arrow.setAttribute("aria-hidden", "true");
-  link.append(arrow);
   renderList(tags, project.tags);
 
   if (project.demo) body.append(makeElement("span", "Демонстрационный кейс", "demo-badge"));
   body.append(makeElement("h3", project.title), makeElement("p", project.description), tags, link);
-  card.append(makeImage(project.cover, "", "project-image"), body);
+  const cover = project.cover
+    ? makeImage(project.cover, "", "project-image")
+    : makeElement("div", project.coverTitle, `project-image project-cover project-cover-${project.category}`);
+  if (!project.cover) cover.setAttribute("aria-hidden", "true");
+  card.append(cover, body);
   return card;
 }
 
@@ -188,6 +128,16 @@ function setupCase(article) {
   renderList(document.getElementById("case-work"), project.work);
   renderList(document.getElementById("case-tech"), project.technologies);
 
+  const facts = document.getElementById("case-facts");
+  if (project.facts) {
+    for (const [label, value] of Object.entries(project.facts)) {
+      const item = makeElement("div");
+      item.append(makeElement("dt", label), makeElement("dd", value));
+      facts.append(item);
+    }
+    facts.hidden = false;
+  }
+
   const gallery = document.getElementById("case-gallery");
   project.gallery.forEach(({ src, alt, caption }) => {
     const figure = makeElement("figure");
@@ -204,12 +154,11 @@ function setupCase(article) {
     figure.append(makeElement("figcaption", caption));
     gallery.append(figure);
   });
-  if (!project.gallery.length) gallery.append(makeElement("p", "Скриншоты пока не добавлены."));
+  document.getElementById("gallery-section").hidden = !project.gallery.length;
   article.hidden = false;
 }
 
 setupMenu();
-setupContacts();
 
 const featured = document.getElementById("featured-projects");
 const catalog = document.getElementById("project-list");
