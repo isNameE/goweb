@@ -14,7 +14,6 @@ js/requests.js   Черновик заявки в Telegram
 js/reviews.js    Форма отзывов и вывод опубликованных отзывов
 reviews.json     Одобренные отзывы о сайте
 js/projects.js   Категории и массив кейсов
-images/          Иллюстрации сайта
 README.md        Инструкция по публикации и редактированию
 .nojekyll        Публикация статических файлов напрямую
 ```
@@ -31,13 +30,13 @@ README.md        Инструкция по публикации и редакт�
 
 ### 2. Загрузите файлы в ветку `main`
 
-На странице нового пустого репозитория нажмите **uploading an existing file**. Если в нём уже есть файлы, нажмите **Add file → Upload files**. Перетащите содержимое папки проекта из проводника в область загрузки. Проверьте, что `index.html`, `projects.html`, `project.html` и `README.md` оказались в корне, а `css`, `js` и `images` сохранили свои имена. Для публикации достаточно файлов из списка выше. Нажмите **Commit changes**. [Загрузка файлов через браузер](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository)
+На странице нового пустого репозитория нажмите **uploading an existing file**. Если в нём уже есть файлы, нажмите **Add file → Upload files**. Перетащите содержимое папки проекта из проводника в область загрузки. Проверьте, что `index.html`, `projects.html`, `project.html` и `README.md` оказались в корне, а `css` и `js` сохранили свои имена. Для публикации достаточно файлов из списка выше. Нажмите **Commit changes**. [Загрузка файлов через браузер](https://docs.github.com/en/repositories/working-with-files/managing-files/adding-a-file-to-a-repository)
 
 Если загрузчик браузера разворачивает папки, воспользуйтесь Git из папки проекта. Эти команды предназначены для первого пуша в пустой репозиторий. Замените `ВАШ_ЛОГИН` и `masterfresh` на имя владельца и репозитория из адресной строки GitHub.
 
 ```bash
 git init -b main
-git add index.html projects.html project.html css js images reviews.json README.md .nojekyll
+git add index.html projects.html project.html css js reviews.json README.md .nojekyll
 git commit -m "Add MasterFresh website"
 git remote add origin https://github.com/ВАШ_ЛОГИН/masterfresh.git
 git push -u origin main
@@ -65,7 +64,7 @@ git push -u origin main
 
 ## Замена изображений, текстов и ссылок
 
-- **Изображения.** Положите новые файлы в `images/`. Для главной обновите `src` у `.hero-image` в `index.html`. Для кейса измените `cover` и `gallery` в `js/projects.js`. В `alt` кратко опишите содержание каждого скриншота. Используйте путь вида `images/project-cover.webp` и соблюдайте регистр букв в имени файла.
+- **Скриншоты кейсов.** Создайте папку `images/` и положите туда файлы. Для кейса измените `cover` и `gallery` в `js/projects.js`. В `alt` кратко опишите содержание каждого скриншота. Используйте путь вида `images/project-cover.webp` и соблюдайте регистр букв в имени файла.
 - **Тексты.** Редактируйте главную и услуги в `index.html`, содержимое кейсов в `js/projects.js`, заголовки разделов кейса в `project.html`. Шапка и футер записаны в каждом из трёх HTML-файлов. Цвета заданы в начале `css/style.css`.
 - **Контакты.** Ссылки находятся в HTML трёх страниц. Если меняется Telegram, также обновите адрес для черновиков в `js/requests.js` и `js/reviews.js`.
 
