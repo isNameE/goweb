@@ -10,6 +10,7 @@
   <script src="js/projects.js" defer></script>
   <script src="js/main.js" defer></script>
   <script src="js/reviews.js" defer></script>
+  <script src="js/requests.js" defer></script>
 </head>
 <body>
   <a class="skip-link" href="#main">К содержанию</a>
@@ -23,7 +24,7 @@
         <a href="#about">О компании</a>
         <a href="#contacts">Контакты</a>
         <a href="#reviews">Отзывы</a>
-        <a class="button button-primary header-cta" href="https://t.me/wor_t_h">Обсудить проект</a>
+        <a class="button button-primary header-cta" href="#request">Оставить заявку</a>
       </nav>
     </div>
   </header>
@@ -35,7 +36,7 @@
           <h1>Разрабатываем программное обеспечение <span>для роста бизнеса</span></h1>
           <p>Веб-приложения, мобильные приложения, CRM, автоматизация и цифровые продукты</p>
           <div class="actions">
-            <a class="button button-primary" href="https://t.me/wor_t_h">Обсудить проект</a>
+            <a class="button button-primary" href="#request">Оставить заявку</a>
             <a class="button button-secondary" href="projects.html" data-requires-projects hidden>Смотреть проекты</a>
           </div>
         </div>
@@ -92,6 +93,40 @@
           <h3>Примеры технологий</h3>
           <ul class="tags"><li>HTML</li><li>CSS</li><li>JavaScript</li><li>Python</li><li>Node.js</li><li>React</li><li>Flutter</li><li>PostgreSQL</li></ul>
         </div>
+      </div>
+    </section>
+
+    <section class="section request-section" id="request" aria-labelledby="request-title">
+      <div class="container request-grid">
+        <div class="section-heading">
+          <h2 id="request-title">Оставить заявку</h2>
+          <p>Опишите задачу. Мы обсудим с вами объём работ, сроки и стоимость.</p>
+        </div>
+        <form class="request-form" id="request-form" aria-describedby="request-help" hidden>
+          <div class="form-field">
+            <label for="request-name">Как к вам обращаться</label>
+            <input id="request-name" name="name" autocomplete="name" maxlength="60" required>
+          </div>
+          <div class="form-field">
+            <label for="request-service">Что нужно разработать</label>
+            <select id="request-service" name="service" required>
+              <option value="">Выберите направление</option>
+              <option>Сайт или веб-приложение</option>
+              <option>Мобильное приложение</option>
+              <option>CRM или личный кабинет</option>
+              <option>Автоматизация или интеграция</option>
+              <option>Другое</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="request-description">Описание задачи</label>
+            <textarea id="request-description" name="description" rows="5" minlength="10" maxlength="600" required></textarea>
+          </div>
+          <button class="button button-primary" type="submit">Открыть черновик в Telegram</button>
+          <p class="form-help" id="request-help">Нажмите «Отправить» в Telegram. Ответ придёт в этот же чат.</p>
+          <p class="form-help" id="request-status" role="status"></p>
+        </form>
+        <noscript><p><a href="https://t.me/wor_t_h">Написать о проекте в Telegram</a></p></noscript>
       </div>
     </section>
 

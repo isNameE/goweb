@@ -309,7 +309,7 @@ p { color: var(--muted); }
 
 .section-muted { background: linear-gradient(135deg, #fdf1ff, #eee7ff 60%, #e2faff); }
 .section-heading h2, .page-heading h1 { font-weight: 850; }
-.project-card, .service-card, .technology-panel, .case-grid > section, .review-form, .review-card {
+.project-card, .service-card, .technology-panel, .case-grid > section, .request-form, .review-form, .review-card {
   background: linear-gradient(#fff 45%, #f9f3ff);
   box-shadow: var(--shadow);
 }
@@ -393,8 +393,8 @@ p { color: var(--muted); }
 .social-vk { --social-light: #417dff; --social-dark: #0752cd; --social-base: #093b96; }
 
 .reviews-section { background: #fff9ff; }
-.review-grid { display: grid; gap: 24px; }
-.review-form, .review-card {
+.request-grid, .review-grid { display: grid; gap: 24px; }
+.request-form, .review-form, .review-card {
   display: grid;
   gap: 14px;
   padding: clamp(16px, 4vw, 28px);
@@ -421,7 +421,7 @@ p { color: var(--muted); }
 .review-consent { display: flex; gap: 9px; align-items: start; font-size: .9rem; }
 .review-consent input { accent-color: var(--blue); width: 18px; height: 18px; flex-shrink: 0; }
 .form-help { font-size: .9rem; }
-#review-status:empty { display: none; }
+#request-status:empty, #review-status:empty { display: none; }
 .site-footer {
   background: #251450;
   color: #fff;
@@ -435,7 +435,7 @@ p { color: var(--muted); }
   .site-header .site-nav.is-collapsible { background: #251450; border-color: #694a99; }
 }
 @media (min-width: 760px) {
-  .review-grid { grid-template-columns: 1fr minmax(340px, 1fr); align-items: start; }
+  .request-grid, .review-grid { grid-template-columns: 1fr minmax(340px, 1fr); align-items: start; }
 }
 @media (min-width: 900px) {
   .site-nav { gap: clamp(12px, 1.65vw, 26px); }
