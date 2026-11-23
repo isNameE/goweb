@@ -3,7 +3,7 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Демонстрационные кейсы MasterFresh: веб-приложения, мобильные приложения, CRM, E-commerce и AI.">
+  <meta name="description" content="Каталог проектов MasterFresh.">
   <meta name="theme-color" content="#251450">
   <title>Наши проекты — MasterFresh</title>
   <link rel="stylesheet" href="css/style.css">
@@ -17,7 +17,7 @@
       <a class="wordmark" href="index.html" aria-label="MasterFresh — главная">Master<span>Fresh</span></a>
       <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="main-nav" aria-label="Открыть меню" hidden><span></span><span></span><span></span></button>
       <nav class="site-nav" id="main-nav" aria-label="Основная навигация">
-        <a href="projects.html" aria-current="page">Проекты</a>
+        <a href="projects.html" aria-current="page" data-requires-projects hidden>Проекты</a>
         <a href="index.html#services">Услуги</a>
         <a href="index.html#about">О компании</a>
         <a href="index.html#contacts">Контакты</a>
@@ -30,18 +30,17 @@
   <main id="main" class="section section-muted catalog">
     <div class="container">
       <a class="back-link" href="index.html"><span aria-hidden="true">←</span> На главную</a>
-      <div class="section-heading page-heading"><h1>Наши проекты</h1><p>Демонстрационные кейсы с примерами интерфейсов и сценариев использования.</p></div>
-      <div class="filters" id="project-filters" role="group" aria-label="Категории проектов"></div>
+      <div class="section-heading page-heading"><h1>Наши проекты</h1><p id="catalog-empty">В каталоге пока нет опубликованных проектов.</p></div>
+      <div class="filters" id="project-filters" role="group" aria-label="Категории проектов" hidden></div>
       <p class="visually-hidden" id="filter-status" aria-live="polite"></p>
       <div class="project-grid" id="project-list"></div>
-      <noscript><p>Для просмотра каталога включите JavaScript.</p></noscript>
     </div>
   </main>
 
   <footer class="site-footer">
     <div class="container footer-inner">
       <div><a class="wordmark" href="index.html" aria-label="MasterFresh — главная">Master<span>Fresh</span></a><p>© 2026 MasterFresh<br>ИП Агаджанов Даниэль Эдуардович</p></div>
-      <nav aria-label="Навигация в подвале"><a href="projects.html" aria-current="page">Проекты</a><a href="index.html#services">Услуги</a><a href="index.html#about">О компании</a><a href="index.html#contacts">Контакты</a></nav>
+      <nav aria-label="Навигация в подвале"><a href="projects.html" aria-current="page" data-requires-projects hidden>Проекты</a><a href="index.html#services">Услуги</a><a href="index.html#about">О компании</a><a href="index.html#contacts">Контакты</a></nav>
       <nav aria-label="Связаться с MasterFresh"><a href="https://t.me/wor_t_h">Telegram</a><a href="https://wa.me/qr/KIA7K7KHB7VPG1">WhatsApp</a><a href="https://vk.ru/wort_h">ВКонтакте</a></nav>
     </div>
   </footer>

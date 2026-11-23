@@ -85,9 +85,13 @@ function renderProjects(grid, projects) {
 }
 
 function setupCatalog(grid) {
+  if (!PROJECTS.length) return;
+
   const filters = document.getElementById("project-filters");
   const status = document.getElementById("filter-status");
   const categories = [["all", "Все"], ...Object.entries(PROJECT_CATEGORIES)];
+  document.getElementById("catalog-empty").hidden = true;
+  filters.hidden = false;
 
   categories.forEach(([key, label]) => {
     const button = makeElement("button", label, "filter-button");
@@ -164,6 +168,11 @@ const featured = document.getElementById("featured-projects");
 const catalog = document.getElementById("project-list");
 const detail = document.getElementById("project-detail");
 
-if (featured) renderProjects(featured, PROJECTS.slice(0, 3));
+if (PROJECTS.length) {
+  document.querySelectorAll("[data-requires-projects]").forEach((element) => {
+    element.hidden = false;
+  });
+  if (featured) renderProjects(featured, PROJECTS.slice(0, 3));
+}
 if (catalog) setupCatalog(catalog);
 if (detail) setupCase(detail);
